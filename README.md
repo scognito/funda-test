@@ -1,16 +1,19 @@
-# funda_test
+## Info
 
-A new Flutter project.
+I'm not dutch so I cannot verify the correctness of the labels :)
 
-## Getting Started
+Models are created using json_to_dart web utility, then I modified the source removing a lot of
+unnecessary fields.
 
-This project is a starting point for a Flutter application.
+Instead of hardcoding an id for showing an apartment (that could not be available when reviewing the
+app), I decided to show the first page of all available apartments in Amsterdam, with the
+possibility to click on each one and see the details.
 
-A few resources to get you started if this is your first Flutter project:
+## Packages used
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+* http for network requests
+* url_launcher for making calls and open external urls like google maps (see below)
+* get_it as service locator
+* flutter_html for render some fields that arrive in html format (like "waarde")
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+I didn't added a video package for playing videos. I prefer to leave the app as simple as I can. 
