@@ -48,6 +48,8 @@ class WebService {
   }
 
   String getUrlPath(String searchTerm, String? page) {
-    return '/feeds/Aanbod.svc/json/$apiKey/?type=koop&zo=/$searchTerm/tuin/video$page';
+    String p = page ?? '';
+
+    return '/feeds/Aanbod.svc/json/$apiKey/?type=koop&zo=/$searchTerm/tuin/video$p';
   }
 }

@@ -78,7 +78,7 @@ class ScreenHome extends StatelessWidget {
                       Expanded(
                         child: GestureDetector(
                           child: Text(
-                            '${model.totalResult} apartments in ${model.searchTerm}',
+                            '${model.totalResult} apartments found',
                             style: AppText.default14Regular
                                 .copyWith(color: AppColors.mediumGrey),
                             textAlign: TextAlign.center,
@@ -116,6 +116,7 @@ class ScreenHome extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(12, 8, 12, 16),
                     child: SearchBar(
+                      key: const ValueKey('SearchBar'),
                       shape: MaterialStateProperty.all(
                         const ContinuousRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -128,27 +129,27 @@ class ScreenHome extends StatelessWidget {
                       hintStyle:
                           MaterialStateProperty.all(AppText.default16Thin),
                       textStyle:
-                          MaterialStateProperty.all(AppText.default16Regular),
+                      MaterialStateProperty.all(AppText.default16Regular),
                       trailing: [
                         !model.canSearch
                             ? IconButton(
-                                icon: Icon(
-                                  Icons.search,
-                                  color: AppColors.lightGrey,
-                                ),
-                                onPressed: () {
-                                  model.search();
-                                },
-                              )
+                          icon: Icon(
+                            Icons.search,
+                            color: AppColors.lightGrey,
+                          ),
+                          onPressed: () {
+                            model.search();
+                          },
+                        )
                             : IconButton(
-                                icon: Icon(
-                                  Icons.clear,
-                                  color: AppColors.lightGrey,
-                                ),
-                                onPressed: () {
-                                  model.clearSearch();
-                                },
-                              ),
+                          icon: Icon(
+                            Icons.clear,
+                            color: AppColors.lightGrey,
+                          ),
+                          onPressed: () {
+                            model.clearSearch();
+                          },
+                        ),
                       ],
                       onSubmitted: (text) {
                         model.searchTerm = text;
