@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:funda_test/config/app_colors.dart';
 import 'package:funda_test/locator.dart';
 import 'package:funda_test/screens/home/screen_home_view.dart';
-import 'package:funda_test/styles.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,8 +21,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSwatch().copyWith(
-          primary: kBackgroundColor,
-          secondary: kBackgroundColor,
+          primary: AppColors.fundaOrange,
+          secondary: AppColors.fundaOrange,
         ),
       ),
       home: const ScreenHome(),

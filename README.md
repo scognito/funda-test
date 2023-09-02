@@ -12,8 +12,12 @@ possibility to click on each one and see the details.
 ## Packages used
 
 * http for network requests
+* provider for simple state management
 * url_launcher for making calls and open external urls like google maps (see below)
 * get_it as service locator
 * flutter_html for render some fields that arrive in html format (like "waarde")
 
-I didn't added a video package for playing videos. I prefer to leave the app as simple as I can. 
+I didn't added a video package for playing videos. I prefer to leave the app as simple as I can.
+
+There are a lot of possible nullable keys that come from API, so I've added the question mark for
+the ones needed for the purpouse of the app

@@ -1,11 +1,13 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:funda_test/basic_viewmodel.dart';
+import 'package:funda_test/config/utils.dart';
 import 'package:funda_test/locator.dart';
 import 'package:funda_test/models/apartment_index.dart';
+import 'package:funda_test/screens/detail/screen_detail_view.dart';
 import 'package:funda_test/services/web_service.dart';
-import 'package:funda_test/utils.dart';
 
 class ScreenHomeViewModel extends BasicViewModel {
   final _web = locator.get<WebService>();
@@ -70,6 +72,7 @@ class ScreenHomeViewModel extends BasicViewModel {
 
   void clearSearch() {
     textEditingController.text = '';
+    searchTerm = '';
     notifyListeners();
   }
 
@@ -88,11 +91,25 @@ class ScreenHomeViewModel extends BasicViewModel {
     return apartmentIndex!.objects.isNotEmpty;
   }
 
+  Future<void> goToDetail(
+    ApartmentObject apartment,
+    BuildContext context,
+  ) async {
+    await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ScreenApartmentDetail(apartmentId: apartment.id!),
+      ),
+    );
+  }
+
   void debug() {
-    dPrint('searchTerm: $searchTerm');
-    dPrint('currentPage: $currentPage');
-    dPrint('previousPageLink: $previousPageLink');
-    dPrint('nextPageLink: $nextPageLink');
+    if (kDebugMode) {
+      dPrint('searchTerm: $searchTerm');
+      dPrint('currentPage: $currentPage');
+      dPrint('previousPageLink: $previousPageLink');
+      dPrint('nextPageLink: $nextPageLink');
+    }
   }
 
   @override

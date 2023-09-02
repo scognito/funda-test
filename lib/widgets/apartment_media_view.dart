@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:funda_test/config/app_assets.dart';
+import 'package:funda_test/config/app_colors.dart';
 import 'package:funda_test/models/apartment.dart';
 
 class ApartmentMediaView extends StatelessWidget {
@@ -27,27 +29,24 @@ class ApartmentMediaView extends StatelessWidget {
               ...apartment.media!.map((e) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 3.0),
-                  child: Image.network(e.mediaItems!.last.url!),
+                  child: FadeInImage.assetNetwork(
+                    placeholder: Assets.placeholder,
+                    image: e.mediaItems!.last.url!,
+                  ),
                 );
               }).toList(),
             ],
           ),
           const Positioned(
-            left: 0,
-            child: Icon(
-              Icons.chevron_left,
-              color: Colors.white,
-              size: 42,
-            ),
-          ),
+              left: 10,
+              child: ArrowButton(
+                icon: Icons.chevron_left,
+              )),
           const Positioned(
-            right: 0,
-            child: Icon(
-              Icons.chevron_right,
-              color: Colors.white,
-              size: 42,
-            ),
-          ),
+              right: 10,
+              child: ArrowButton(
+                icon: Icons.chevron_right,
+              )),
           if (apartment.wGS84Y != null &&
               apartment.wGS84X != null &&
               onMapClicked != null)
@@ -57,10 +56,38 @@ class ApartmentMediaView extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () => onMapClicked!(),
                 style: ElevatedButton.styleFrom(fixedSize: const Size(32, 32)),
-                child: const Icon(Icons.map_sharp, color: Colors.white),
+                child: Icon(
+                  Icons.map_sharp,
+                  color: AppColors.white,
+                ),
               ),
             ),
         ],
+      ),
+    );
+  }
+}
+
+// TODO: Add controller for handling taps and scroll media
+class ArrowButton extends StatelessWidget {
+  final IconData icon;
+
+  const ArrowButton({
+    required this.icon,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: AppColors.white.withOpacity(0.5),
+      ),
+      child: Icon(
+        icon,
+        color: AppColors.white,
+        size: 42,
       ),
     );
   }

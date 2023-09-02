@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:funda_test/config/app_colors.dart';
 
 class Separator extends StatelessWidget {
   const Separator({super.key});
@@ -7,11 +8,11 @@ class Separator extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(
-        vertical: 8.0,
+        vertical: 16.0,
       ),
       child: Container(
-        height: 0.5,
-        color: Colors.grey,
+        height: 0.2,
+        color: AppColors.lightGrey,
       ),
     );
   }

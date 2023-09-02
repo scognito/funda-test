@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:funda_test/config/app_colors.dart';
 import 'package:funda_test/models/network_exception.dart';
 
 class RetryView extends StatelessWidget {
@@ -23,19 +24,21 @@ class RetryView extends StatelessWidget {
       message = error.toString();
     }
 
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Text(message),
-        const SizedBox(height: 16),
-        MaterialButton(
-          color: Colors.red,
-          textColor: Colors.white,
-          onPressed: callback,
-          child: const Text('Retry'),
-        ),
-      ],
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(message),
+          const SizedBox(height: 16),
+          MaterialButton(
+            color: AppColors.fundaOrange,
+            textColor: AppColors.white,
+            onPressed: callback,
+            child: const Text('Retry'),
+          ),
+        ],
+      ),
     );
   }
 }

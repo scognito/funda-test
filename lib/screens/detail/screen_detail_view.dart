@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:funda_test/models/apartment.dart';
-import 'package:funda_test/screens/detail/apartment_features_view.dart';
+import 'package:funda_test/widgets/apartment_features_view.dart';
 import 'package:funda_test/screens/detail/screen_details_viewmodel.dart';
 import 'package:funda_test/widgets/apartment_info_view.dart';
 import 'package:funda_test/widgets/apartment_media_view.dart';
@@ -39,7 +39,7 @@ class ScreenApartmentDetail extends StatelessWidget {
 
             body = SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.symmetric(vertical: 0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -56,16 +56,15 @@ class ScreenApartmentDetail extends StatelessWidget {
           }
 
           return Scaffold(
-              appBar: AppBar(title: Text(model.apartmentName)),
-              body: SafeArea(
-                child: body,
-              ),
-              floatingActionButton: model.hasBrokerPhone
-                  ? FloatingActionButton(
-                      child: const Icon(Icons.phone),
-                      onPressed: () => model.callBroker(),
-                    )
-                  : null);
+            appBar: AppBar(title: Text(model.apartmentName)),
+            body: body,
+            floatingActionButton: model.hasBrokerPhone
+                ? FloatingActionButton(
+                    child: const Icon(Icons.phone),
+                    onPressed: () => model.callBroker(),
+                  )
+                : null,
+          );
         },
       ),
     );
