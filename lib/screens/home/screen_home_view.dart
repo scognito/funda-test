@@ -152,7 +152,7 @@ class ScreenHome extends StatelessWidget {
                               ),
                       ],
                       onSubmitted: (text) {
-                        model.searchTerm = text;
+                        model.searchTerm = text.trim();
                         model.search();
                       },
                     ),

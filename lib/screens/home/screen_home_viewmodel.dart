@@ -77,7 +77,7 @@ class ScreenHomeViewModel extends BasicViewModel {
   }
 
   void setSearchTerm(String term) {
-    searchTerm = term;
+    searchTerm = term.trim();
     notifyListeners();
   }
 
