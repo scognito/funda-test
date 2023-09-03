@@ -3,9 +3,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:funda_test/config/app_colors.dart';
 import 'package:funda_test/config/utils.dart';
 import 'package:funda_test/screens/home/screen_home_view.dart';
+import 'package:funda_test/widgets/apartment_info_view.dart';
 import 'package:funda_test/widgets/apartment_list_item_view.dart';
 
-import '../mock_locator.dart';
+import 'mock_locator.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,7 +15,7 @@ void main() async {
   await locator.allReady();
 
   setUp(() async {
-    dPrint('Setup widget test at: ${DateTime.now().toIso8601String()}');
+    dPrint('Setup integration test at: ${DateTime.now().toIso8601String()}');
   });
 
   Widget createWidgetUnderTest() {
@@ -58,11 +59,20 @@ void main() async {
 
       await tester.pumpAndSettle();
 
+      // Search result
       expect(find.byType(ApartmentListItemView), findsWidgets);
 
       await tester.tap(find.byType(ApartmentListItemView).first);
 
-      await tester.pumpAndSettle(Duration(seconds: 3));
+      await tester.pumpAndSettle();
+
+      // Screen detail view
+      expect(find.byType(ApartmentInfoView), findsOneWidget);
+
+      final ApartmentInfoView apartmentInfoView =
+          tester.widget(find.byType(ApartmentInfoView)) as ApartmentInfoView;
+
+      expect(apartmentInfoView.apartment.adres, 'Noorderakerweg 50');
     });
   });
 }

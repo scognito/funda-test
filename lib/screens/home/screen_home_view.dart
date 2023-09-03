@@ -25,7 +25,7 @@ class ScreenHome extends StatelessWidget {
           } else if (model.hasError) {
             body = RetryView(
               error: model.error,
-              callback: () => model.search(),
+              callback: () => model.search,
             );
           } else if (!model.hasData) {
             body = Center(
@@ -129,27 +129,27 @@ class ScreenHome extends StatelessWidget {
                       hintStyle:
                           MaterialStateProperty.all(AppText.default16Thin),
                       textStyle:
-                      MaterialStateProperty.all(AppText.default16Regular),
+                          MaterialStateProperty.all(AppText.default16Regular),
                       trailing: [
                         !model.canSearch
                             ? IconButton(
-                          icon: Icon(
-                            Icons.search,
-                            color: AppColors.lightGrey,
-                          ),
-                          onPressed: () {
-                            model.search();
-                          },
-                        )
+                                icon: Icon(
+                                  Icons.search,
+                                  color: AppColors.lightGrey,
+                                ),
+                                onPressed: () {
+                                  model.search();
+                                },
+                              )
                             : IconButton(
-                          icon: Icon(
-                            Icons.clear,
-                            color: AppColors.lightGrey,
-                          ),
-                          onPressed: () {
-                            model.clearSearch();
-                          },
-                        ),
+                                icon: Icon(
+                                  Icons.clear,
+                                  color: AppColors.lightGrey,
+                                ),
+                                onPressed: () {
+                                  model.clearSearch();
+                                },
+                              ),
                       ],
                       onSubmitted: (text) {
                         model.searchTerm = text;

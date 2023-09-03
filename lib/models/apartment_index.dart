@@ -113,9 +113,6 @@ class ApartmentObject {
   int? perceeloppervlakte;
   String? postcode;
   Prijs? prijs;
-  String? prijsGeformatteerdHtml;
-  String? prijsGeformatteerdTextHuur;
-  String? prijsGeformatteerdTextKoop;
   List<String>? producten;
   Project? project;
   PromoLabel? promoLabel;
@@ -170,9 +167,6 @@ class ApartmentObject {
       this.perceeloppervlakte,
       this.postcode,
       this.prijs,
-      this.prijsGeformatteerdHtml,
-      this.prijsGeformatteerdTextHuur,
-      this.prijsGeformatteerdTextKoop,
       this.producten,
       this.project,
       this.promoLabel,
@@ -227,9 +221,6 @@ class ApartmentObject {
     perceeloppervlakte = json['Perceeloppervlakte'];
     postcode = json['Postcode'];
     prijs = json['Prijs'] != null ? Prijs.fromJson(json['Prijs']) : null;
-    prijsGeformatteerdHtml = json['PrijsGeformatteerdHtml'];
-    prijsGeformatteerdTextHuur = json['PrijsGeformatteerdTextHuur'];
-    prijsGeformatteerdTextKoop = json['PrijsGeformatteerdTextKoop'];
     producten = json['Producten'].cast<String>();
     project =
         json['Project'] != null ? Project.fromJson(json['Project']) : null;
@@ -291,9 +282,6 @@ class ApartmentObject {
     if (prijs != null) {
       data['Prijs'] = prijs!.toJson();
     }
-    data['PrijsGeformatteerdHtml'] = prijsGeformatteerdHtml;
-    data['PrijsGeformatteerdTextHuur'] = prijsGeformatteerdTextHuur;
-    data['PrijsGeformatteerdTextKoop'] = prijsGeformatteerdTextKoop;
     data['Producten'] = producten;
     if (project != null) {
       data['Project'] = project!.toJson();

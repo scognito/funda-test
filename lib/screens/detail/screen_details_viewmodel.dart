@@ -1,14 +1,13 @@
 import 'package:funda_test/basic_viewmodel.dart';
+import 'package:funda_test/config/utils.dart';
 import 'package:funda_test/locator.dart';
 import 'package:funda_test/models/apartment.dart';
 import 'package:funda_test/services/web_service.dart';
-import 'package:funda_test/config/utils.dart';
 
 class ScreenDetailsViewModel extends BasicViewModel {
   final _web = locator.get<WebService>();
 
   Apartment? apartment;
-
   final String apartmentId;
 
   ScreenDetailsViewModel({required this.apartmentId}) {

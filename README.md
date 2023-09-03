@@ -2,22 +2,27 @@
 
 I'm not dutch so I cannot verify the correctness of the labels :)
 
-Models are created using json_to_dart web utility, then I modified the source removing a lot of
-unnecessary fields.
-
-Instead of hardcoding an id for showing an apartment (that could not be available when reviewing the
-app), I decided to show the first page of all available apartments in Amsterdam, with the
-possibility to click on each one and see the details.
+JSON models are created using json_to_dart web utility: many values were automatically set nullable
+so
+I used the ! / ? / ?? operators quite ofter. Usually I ask the backend team for which ones are
+mandatory.
 
 ## Packages used
 
+I've used the minimum number of packages for the purpose
+
 * http for network requests
+* url_launcher for making calls and open external urls like google maps or make a phone call
 * provider for simple state management
-* url_launcher for making calls and open external urls like google maps (see below)
-* get_it as service locator
+* get_it as service locator for dependency injection
 * flutter_html for render some fields that arrive in html format (like "waarde")
 
 I didn't added a video package for playing videos. I prefer to leave the app as simple as I can.
 
-There are a lot of possible nullable keys that come from API, so I've added the question mark for
-the ones needed for the purpouse of the app
+## Notes
+
+I didn't use any routing or i18n package since the test app is basic
+
+## Tests
+
+Integration test are in the integration_test directory

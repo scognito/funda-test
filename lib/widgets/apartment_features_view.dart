@@ -37,7 +37,10 @@ class ApartmentFeaturesView extends StatelessWidget {
 class Section extends StatelessWidget {
   final Kenmerken characteristic;
 
-  const Section({Key? key, required this.characteristic}) : super(key: key);
+  const Section({
+    Key? key,
+    required this.characteristic,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -53,32 +56,30 @@ class Section extends StatelessWidget {
         if (characteristic.kenmerken != null &&
             characteristic.kenmerken!.isNotEmpty)
           ...characteristic.kenmerken!
-              .map((e) => Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        e.naam ?? '',
-                        style: AppText.default16Regular
-                            .copyWith(color: AppColors.darkGray),
-                      ),
-                      const SizedBox(height: 4),
-                      Html(
-                        data: e.waarde,
-                        style: {
-                          'body': Style(
-                              color: const Color(0xff000000),
-                              padding: HtmlPaddings.zero,
-                              margin: Margins(
-                                bottom: Margin.zero(),
-                                left: Margin.zero(),
-                                top: Margin.zero(),
-                                right: Margin.zero(),
-                              )),
-                        },
-                      ),
-                      const Separator(),
-                    ],
-                  ))
+              .map(
+                (e) => Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      e.naam ?? '',
+                      style: AppText.default16Regular
+                          .copyWith(color: AppColors.darkGray),
+                    ),
+                    const SizedBox(height: 4),
+                    Html(
+                      data: e.waarde,
+                      style: {
+                        'body': Style(
+                          color: AppColors.black,
+                          padding: HtmlPaddings.zero,
+                          margin: Margins.all(0),
+                        )
+                      },
+                    ),
+                    const Separator(),
+                  ],
+                ),
+              )
               .toList()
       ],
     );

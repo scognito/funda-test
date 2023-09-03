@@ -4,14 +4,12 @@ import 'package:funda_test/models/network_exception.dart';
 
 class RetryView extends StatelessWidget {
   final dynamic error;
-  final void Function() callback;
-  final bool showGoBack;
+  final Function callback;
 
   const RetryView({
     Key? key,
     required this.error,
     required this.callback,
-    this.showGoBack = false,
   }) : super(key: key);
 
   @override
@@ -25,19 +23,22 @@ class RetryView extends StatelessWidget {
     }
 
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text(message),
-          const SizedBox(height: 16),
-          MaterialButton(
-            color: AppColors.fundaOrange,
-            textColor: AppColors.white,
-            onPressed: callback,
-            child: const Text('Retry'),
-          ),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(message),
+            const SizedBox(height: 16),
+            MaterialButton(
+              color: AppColors.fundaOrange,
+              textColor: AppColors.white,
+              onPressed: callback(),
+              child: const Text('Retry'),
+            ),
+          ],
+        ),
       ),
     );
   }

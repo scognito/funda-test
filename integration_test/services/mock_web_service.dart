@@ -21,6 +21,7 @@ class MockWebService implements WebService {
 
   @override
   String getUrlPath(String searchTerm, String? page) {
+    // not needed for tests
     return '';
   }
 }
